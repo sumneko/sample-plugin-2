@@ -1,16 +1,14 @@
 function OnSetText(uri, text)
     local diffs = {}
 
-    for start, realName, finish in text:gmatch [=[require[ ]*["']()__(.-)()["']]=] do
-        diffs[#diffs+1] = {
-            start  = start,
-            finish = finish - 1,
-            text   = realName,
-        }
-    end
-
-    if #diffs == 0 then
-        return nil
+    for pos in text:gmatch '()#' do
+        if pos == 1 or text:sub(pos - 1, pos - 1):match '[\r\n]' then
+            diffs[#diffs+1] = {
+                start = pos,
+                finish = pos,
+                text = '//'
+            }
+        end
     end
 
     return diffs

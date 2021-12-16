@@ -1,1 +1,4 @@
-require '__test'
+print(11)
+
+--XXXX
+#AAAAA
