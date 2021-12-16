@@ -6,4 +6,5 @@
             "comment": "#ff0000"
         }
     },
+    "editor.semanticHighlighting.enabled": true
 }
